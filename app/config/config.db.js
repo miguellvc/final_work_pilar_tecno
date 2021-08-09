@@ -1,21 +1,12 @@
-const mongoose = require('mongoose');
 
-const dbConnetion = async() =>{
-
-   try {
-        await mongoose.connect('', {
-                            useNewUrlParser: true, 
-                            useUnifiedTopology: true,
-                            useCreateIndex: true,
-                            useFindAndModify: false
-                        });
-        console.log('');
-   } catch (error) {
-       
-        throw new Error('');
-   }    
-};
+const dbUser = process.env.DB_USER;
+const dbPass = process.env.DB_PASSWORD;
+const dbName = 'pilartecno'
+const dbUri = `mongodb+srv://${dbUser}:${dbPass}@cluster0.lifms.mongodb.net/${dbName}`;
+const mongooseOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false};
 
 module.exports = {
-    dbConnetion
-};
+     dbUri,
+     mongooseOptions
+}
+
